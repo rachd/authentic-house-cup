@@ -10,8 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.2",
-    "password-generator": "^2.2.0"
+    "express": "^4.16.2"
   },
   "scripts": {
     "start": "node index.js"

@@ -1,25 +1,31 @@
 const express = require('express');
 const path = require('path');
-const generatePassword = require('password-generator');
+const https = require("https");
 
 const app = express();
+
+const url =
+  "https://www.heytaco.chat/api/v1/json/leaderboard/T03624T4P?days=365";
 
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, 'client/build')));
 
 // Put all API endpoints under '/api'
-app.get('/api/passwords', (req, res) => {
-  const count = 5;
+app.get('/api/leaderboard', (req, res) => {
+    let data;
 
-  // Generate some passwords
-  const passwords = Array.from(Array(count).keys()).map(i =>
-    generatePassword(12, false)
-  )
-
-  // Return them as json
-  res.json(passwords);
-
-  console.log(`Sent ${count} passwords`);
+    https.get(url, resp => {
+        resp.setEncoding("utf8");
+        let body = "";
+        resp.on("data", data => {
+            body += data;
+        });
+        resp.on("end", () => {
+            data = JSON.parse(body);
+            res.json(data);
+            console.log(`Sent data`);
+        });
+    });
 });
 
 // The "catchall" handler: for any request that doesn't
@@ -31,4 +37,4 @@ app.get('*', (req, res) => {
 const port = process.env.PORT || 5000;
 app.listen(port);
 
-console.log(`Password generator listening on ${port}`);
+console.log(`Authentic House Cup listening on ${port}`);
