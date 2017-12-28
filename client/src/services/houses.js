@@ -1,13 +1,13 @@
-// Ravenclaw 0
-// Slytherin 1
+// Slytherin 0
+// Ravenclaw 1
 // Gryffindor 2
 // Hufflepuff 3
 export const HOUSES = {
-    "stefano": 0,
-    "rachel-dorn": 0,
+    "stefano": 1,
+    "rachel-dorn": 1,
     "katdroke": 2,
-    "hollymyles": 0,
+    "hollymyles": 1,
     "kateelane": 3,
-    "molly": 1,
-    "molly.underwood": 1
+    "molly": 0,
+    "molly.underwood": 0
 }

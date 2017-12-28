@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import get from './services/api';
-import {dummyData} from './services/dummy';
 import {HOUSES} from './services/houses';
 
 class App extends Component {
@@ -35,8 +32,8 @@ class App extends Component {
     let bodyData = <div className="body"><p>loading</p></div>;
     if (this.state.houses != null) {
       bodyData = <div className="body">
-        <p>Ravenclaw: {this.state.houses[0]}</p>
-        <p>Slytherin: {this.state.houses[1]}</p>
+        <p>Slytherin: {this.state.houses[0]}</p>
+        <p>Ravenclaw: {this.state.houses[1]}</p>
         <p>Gryffindor: {this.state.houses[2]}</p>
         <p>Hufflepuff: {this.state.houses[3]}</p>
       </div>
