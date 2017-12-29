@@ -44,10 +44,10 @@ class Results extends Component {
     render() {
         let bodyData = <div className="body" style={{textAlign: 'center'}}><p>Casting Magic...</p></div>;
         if (this.state.houses != null) {
-          bodyData = <div className="body" style={{display: 'flex', justifyContent: 'space-around'}}>
+          bodyData = <div className="body" style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around'}}>
             <form style={{textAlign: 'center'}}>
                 <label style={{display: 'inline', marginRight: 10}} htmlFor="days">How many days?</label>
-                <select style={{margin: 0}} defaultValue="30" name="days" onChange={this.handleChange}>
+                <select style={{margin: 0, flexBasis: '100%'}} defaultValue="30" name="days" onChange={this.handleChange}>
                     <option value="7">7</option>
                     <option value="14">14</option>
                     <option value="28">28</option>

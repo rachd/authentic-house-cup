@@ -45,10 +45,11 @@ app.get('/api/sorting', (req, res) => {
     client.connect().catch((e)=>console.log("error connecting to database"));
     client.query('SELECT (username, house) FROM USERS;', (err, resp) => {
         if (err) throw err;
-        let userdata = [];
+        let userdata = {};
         for (let row of resp.rows) {
             const data = row.row;
-            userdata.push(data.substring(1, data.length - 1).split(','));
+            const dataArray = data.substring(1, data.length - 1).split(',');
+            userdata[dataArray[0]] = dataArray[1];
         }
         res.json(userdata);
         client.end();
