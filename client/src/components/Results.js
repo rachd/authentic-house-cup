@@ -8,7 +8,7 @@ class Results extends Component {
         super(props);
         this.state = {
           houses: null,
-          total: 0
+          total: 1
         }
     }
     componentDidMount() {
