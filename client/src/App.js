@@ -1,57 +1,36 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
+import {
+  BrowserRouter as Router,
+  Route
+} from 'react-router-dom';
 import './App.css';
-import {HOUSES} from './services/houses';
-import Header from './components/Header';
-import Hourglass from './components/Hourglass';
+import Results from './components/Results';
+import Sorting from './components/Sorting';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      houses: null,
-      total: 0
-    }
-  }
-  componentDidMount() {
-    this.getData();
-  }
-
-  getData = () => {
-    fetch('/api/leaderboard').then(res => res.json()).then(data => this.processData(data.leaderboard));
-  }
-
-  processData(data) {
-    let houseCounts = [0, 0, 0, 0];
-    let total = 0;
-    data.map((person) => {
-      const house = HOUSES[person.username];
-      if (house != undefined) {
-        houseCounts[house]+= parseInt(person.count);
-        total += parseInt(person.count);
-      }
-    });
-    this.setState({
-      houses: houseCounts,
-      total: total
-    });
-  }
-
   render() {
-    let bodyData = <div className="body"><p>loading</p></div>;
-    if (this.state.houses != null) {
-      bodyData = <div className="body" style={{display: 'flex', justifyContent: 'space-around'}}>
-        <Hourglass house="Slytherin" total={this.state.houses[0]} percentage = {this.state.houses[0] / this.state.total}/>
-        <Hourglass house="Ravenclaw" total={this.state.houses[1]} percentage = {this.state.houses[1] / this.state.total}/>
-        <Hourglass house="Gryffindor" total={this.state.houses[2]} percentage = {this.state.houses[2] / this.state.total}/>
-        <Hourglass house="Hufflepuff" total={this.state.houses[3]} percentage = {this.state.houses[3] / this.state.total}/>
+    const routes = [
+      { path: '/sorting',
+        component: Sorting
+      },
+      { path: '/',
+        component: Results
+      }
+    ]
+
+    const RouteWithSubRoutes = (route) => (
+      <Route exact path={route.path} render={props => (
+        // pass the sub-routes down to keep nesting
+        <route.component {...props} routes={route.routes}/>
+      )}/>
+    )
+    return(<Router>
+      <div>
+        {routes.map((route, i) => (
+          <RouteWithSubRoutes key={i} {...route}/>
+        ))}
       </div>
-    }
-    return (
-      <div className="App">
-        <Header/>
-          {bodyData}
-      </div>
-    );
+    </Router>);
   }
 }
 
