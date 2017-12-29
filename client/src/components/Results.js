@@ -10,19 +10,22 @@ class Results extends Component {
           houses: null,
           total: 0
         }
+        this.processData = this.processData.bind(this);
+        this.getData = this.getData.bind(this);
+        this.handleChange = this.handleChange.bind(this);
     }
     componentDidMount() {
         this.getData();
     }
     
     getData = () => {
-        fetch('https://authentic-house-cup.herokuapp.com/api/leaderboard?days=30').then(res => res.json()).then(data => this.processData(data.leaderboard));
+        fetch('/api/leaderboard?days=30').then(res => res.json()).then(data => this.processData(data.leaderboard));
     }
     
     processData(data) {
         let houseCounts = [0, 0, 0, 0];
         let total = 0;
-        fetch('https://authentic-house-cup.herokuapp.com/api/sorting').then(res => res.json()).then(houses => {
+        fetch('/api/sorting').then(res => res.json()).then(houses => {
             data.map((person) => {
                 const house = houses[person.username];
                 if (house != undefined) {
@@ -38,7 +41,7 @@ class Results extends Component {
     }
 
     handleChange(event) {
-        fetch(`https://authentic-house-cup.herokuapp.com/api/leaderboard?days=${event.target.value}`).then(res => res.json()).then(data => this.processData(data.leaderboard));
+        fetch(`/api/leaderboard?days=${event.target.value}`).then(res => res.json()).then(data => {this.processData(data.leaderboard)});
     }
     
     render() {
