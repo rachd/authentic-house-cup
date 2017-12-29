@@ -27,7 +27,7 @@ class Roster extends Component {
         if(this.state.list) {
             return (
                 <div style={{textAlign: 'center', padding: '20px 0'}}>
-                    <button style={{marginBottom: 20}}><Link to="/">Back to Results</Link></button>
+                    <Link style={{marginBottom: 20}} className="button" to="/">Back to Results</Link>
                     <table style={{margin: '0 auto'}}>
                         <tbody>
                             <tr style={{fontSize: 20, fontWeight: 'bold'}}><td>Username</td><td>House</td></tr>

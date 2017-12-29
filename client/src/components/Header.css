@@ -11,7 +11,7 @@
     height: 100px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1050px) {
     .hp-header__logo {
         height: 100%;
         width: 100%;
@@ -22,7 +22,7 @@
         justify-content: center;
     }
 
-    .hp-header button {
+    .hp-header .button {
         margin: 10px;
     }
 }
