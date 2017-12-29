@@ -13,13 +13,6 @@ const url =
 // Gryffindor 2
 // Hufflepuff 3
 let HOUSES = {
-    "stefano": 1,
-    "rachel-dorn": 1,
-    "katdroke": 2,
-    "hollymyles": 1,
-    "kateelane": 3,
-    "molly": 0,
-    "molly.underwood": 0
 }
 
 app.use(bodyParser.json());
@@ -72,7 +65,9 @@ app.get('/api/sorting', (req, res) => {
 });
 
 app.post('/api/sorting', (req, res) => {
-    console.log(req.body);
+    HOUSES[req.body.username] = req.body.house;
+    res.json(HOUSES);
+    console.log(`updated sorting data`);
 });
 // The "catchall" handler: for any request that doesn't
 // match one above, send back React's index.html file.

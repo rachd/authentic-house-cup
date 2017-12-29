@@ -39,7 +39,7 @@ class Results extends Component {
     }
     
     render() {
-        let bodyData = <div className="body"><p>loading</p></div>;
+        let bodyData = <div className="body" style={{textAlign: 'center'}}><p>Casting Magic...</p></div>;
         if (this.state.houses != null) {
           bodyData = <div className="body" style={{display: 'flex', justifyContent: 'space-around'}}>
             <Hourglass house="Slytherin" total={this.state.houses[0]} percentage = {this.state.houses[0] / this.state.total}/>

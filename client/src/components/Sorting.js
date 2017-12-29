@@ -53,12 +53,17 @@ class Sorting extends Component {
                             <option value="2">Gryffindor</option>
                             <option value="3">Hufflepuff</option>
                         </select>
-                        <input type="submit" value="Submit"/>
+                        <button style={{display: 'block', margin: '0 auto'}} type="submit" value="Submit">I have chosen a house</button>
                     </form>
                 </div>
             );
         } else {
-            return (<p>Fetching list of witches and wizards</p>);
+            return (
+                <div style={{textAlign: 'center', padding: '20px 40px', position: 'relative'}}>
+                    <h1>Sorting Hat</h1>
+                    <p>Fetching list of witches and wizards...</p>
+                </div>
+            );
         }
     }
 }
