@@ -23,6 +23,7 @@ app.use(express.static(path.join(__dirname, 'client/build')));
 app.get('/api/leaderboard', (req, res) => {
     let data;
     let days = req.query.days;
+    res.header("Access-Control-Allow-Origin", "http://localhost:3000");
     https.get(url+days, resp => {
         resp.setEncoding("utf8");
         let body = "";
@@ -51,6 +52,7 @@ app.get('/api/sorting', (req, res) => {
             const dataArray = data.substring(1, data.length - 1).split(',');
             userdata[dataArray[0]] = dataArray[1];
         }
+        res.header("Access-Control-Allow-Origin", "http://localhost:3000");
         res.json(userdata);
         client.end();
         console.log(`Sent sorting data`);
@@ -65,6 +67,7 @@ app.post('/api/sorting', (req, res) => {
     client.connect().catch((e)=>console.log("error connecting to database"));
     client.query(`WITH upsert AS (UPDATE USERS SET house=${req.body.house} WHERE username='${req.body.username}' RETURNING *) INSERT INTO USERS (username, house) SELECT '${req.body.username}', ${req.body.house} WHERE NOT EXISTS (SELECT * FROM upsert);`, (err, resp) => {
         if(err) throw err;
+        res.header("Access-Control-Allow-Origin", "http://localhost:3000");
         res.json(resp);
         client.end();
         console.log(`updated sorting data`);
@@ -73,6 +76,7 @@ app.post('/api/sorting', (req, res) => {
 // The "catchall" handler: for any request that doesn't
 // match one above, send back React's index.html file.
 app.get('*', (req, res) => {
+    res.header("Access-Control-Allow-Origin", "http://localhost:3000");
   res.sendFile(path.join(__dirname+'/client/build/index.html'));
 });
 
