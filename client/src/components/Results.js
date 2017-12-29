@@ -16,7 +16,7 @@ class Results extends Component {
     }
     
     getData = () => {
-        fetch('/api/leaderboard').then(res => res.json()).then(data => this.processData(data.leaderboard));
+        fetch('/api/leaderboard?days=30').then(res => res.json()).then(data => this.processData(data.leaderboard));
     }
     
     processData(data) {
@@ -36,11 +36,28 @@ class Results extends Component {
             });
         });
     }
+
+    handleChange(event) {
+        fetch(`/api/leaderboard?days=${event.target.value}`).then(res => res.json()).then(data => this.processData(data.leaderboard));
+    }
     
     render() {
         let bodyData = <div className="body" style={{textAlign: 'center'}}><p>Casting Magic...</p></div>;
         if (this.state.houses != null) {
           bodyData = <div className="body" style={{display: 'flex', justifyContent: 'space-around'}}>
+            <form style={{textAlign: 'center'}}>
+                <label style={{display: 'inline', marginRight: 10}} htmlFor="days">How many days?</label>
+                <select style={{margin: 0}} defaultValue="30" name="days" onChange={this.handleChange}>
+                    <option value="7">7</option>
+                    <option value="14">14</option>
+                    <option value="28">28</option>
+                    <option value="29">29</option>
+                    <option value="30">30</option>
+                    <option value="31">31</option>
+                    <option value="365">365</option>
+                    <option value="366">366</option>
+                </select>
+            </form>
             <Hourglass house="Slytherin" total={this.state.houses[0]} percentage = {this.state.houses[0] / this.state.total}/>
             <Hourglass house="Ravenclaw" total={this.state.houses[1]} percentage = {this.state.houses[1] / this.state.total}/>
             <Hourglass house="Gryffindor" total={this.state.houses[2]} percentage = {this.state.houses[2] / this.state.total}/>
@@ -60,7 +77,7 @@ class Results extends Component {
                 top: 40
             }}><Link to="/sorting">Choose Your House</Link></button>
             <Header/>
-              {bodyData}
+            {bodyData}
           </div>
         );
     }
