@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const https = require("https");
+const bodyParser = require('body-parser');
 
 const app = express();
 
@@ -20,6 +21,8 @@ let HOUSES = {
     "molly": 0,
     "molly.underwood": 0
 }
+
+app.use(bodyParser.json());
 
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, 'client/build')));
@@ -68,6 +71,9 @@ app.get('/api/sorting', (req, res) => {
     console.log(`Sent sorting data`);
 });
 
+app.post('/api/sorting', (req, res) => {
+    console.log(req.body);
+});
 // The "catchall" handler: for any request that doesn't
 // match one above, send back React's index.html file.
 app.get('*', (req, res) => {
