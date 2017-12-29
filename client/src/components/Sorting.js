@@ -22,7 +22,9 @@ class Sorting extends Component {
     handleSubmit(event) {
         event.preventDefault();
         if(this.state.house && this.state.username) {
-            axios.post('/api/sorting', this.state).then((res) => console.log(res));
+            axios.post('/api/sorting', this.state).then((res) => {
+                window.location.href = '/';
+            });
         }
     }
     

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
-import {HOUSES} from '../services/houses';
 import Header from './Header';
 import Hourglass from './Hourglass';
 
