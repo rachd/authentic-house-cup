@@ -6,12 +6,17 @@ import {
 import './App.css';
 import Results from './components/Results';
 import Sorting from './components/Sorting';
+import Roster from './components/Roster';
 
 class App extends Component {
   render() {
     const routes = [
       { path: '/sorting',
         component: Sorting
+      },
+      {
+        path: '/house-list',
+        component: Roster
       },
       { path: '/',
         component: Results

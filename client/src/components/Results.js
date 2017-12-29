@@ -51,6 +51,11 @@ class Results extends Component {
           <div className="App" style={{position: 'relative'}}>
             <button style={{
                 position: 'absolute',
+                left: 40,
+                top: 40
+            }}><Link to="/house-list">See House Lists</Link></button>
+            <button style={{
+                position: 'absolute',
                 right: 40,
                 top: 40
             }}><Link to="/sorting">Choose Your House</Link></button>
