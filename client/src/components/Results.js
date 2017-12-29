@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
 import Header from './Header';
 import Hourglass from './Hourglass';
 
@@ -71,16 +70,6 @@ class Results extends Component {
         }
         return (
           <div className="App" style={{position: 'relative'}}>
-            <button style={{
-                position: 'absolute',
-                left: 40,
-                top: 40
-            }}><Link to="/house-list">See House Lists</Link></button>
-            <button style={{
-                position: 'absolute',
-                right: 40,
-                top: 40
-            }}><Link to="/sorting">Choose Your House</Link></button>
             <Header/>
             {bodyData}
           </div>

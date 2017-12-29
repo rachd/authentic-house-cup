@@ -31,7 +31,7 @@ class Sorting extends Component {
     render() {
         return (
             <div style={{textAlign: 'center', padding: '20px 40px', position: 'relative'}}>
-                <button style={{position: 'absolute', top: 40, left: 40}}><Link to="/">Back to Results</Link></button>
+                <button style={{marginBottom: 20}}><Link to="/">Back to Results</Link></button>
                 <h1>Sorting Hat</h1>
                 <form onSubmit={this.handleSubmit}>
                     <label htmlFor="username">What is your Slack username?</label>

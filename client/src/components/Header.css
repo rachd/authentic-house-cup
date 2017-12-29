@@ -1,7 +1,9 @@
 .hp-header {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     padding: 20px 40px;
+    flex-wrap: wrap;
+    align-items: center;
 }
 
 .hp-header__logo {
@@ -13,5 +15,14 @@
     .hp-header__logo {
         height: 100%;
         width: 100%;
+        order: -1;
+    }
+
+    .hp-header {
+        justify-content: center;
+    }
+
+    .hp-header button {
+        margin-top: 10px;
     }
 }
