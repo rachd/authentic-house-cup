@@ -44,7 +44,7 @@ class Results extends Component {
     render() {
         let bodyData = <div className="body" style={{textAlign: 'center'}}><p>Casting Magic...</p></div>;
         if (this.state.houses != null) {
-          bodyData = <div className="body" style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around'}}>
+          bodyData = <div>
             <form style={{textAlign: 'center'}}>
                 <label style={{display: 'inline', marginRight: 10}} htmlFor="days">How many days?</label>
                 <select style={{margin: 0, flexBasis: '100%'}} defaultValue="30" name="days" onChange={this.handleChange}>
@@ -58,10 +58,12 @@ class Results extends Component {
                     <option value="366">366</option>
                 </select>
             </form>
-            <Hourglass house="Slytherin" total={this.state.houses[0]} percentage = {this.state.houses[0] / this.state.total}/>
-            <Hourglass house="Ravenclaw" total={this.state.houses[1]} percentage = {this.state.houses[1] / this.state.total}/>
-            <Hourglass house="Gryffindor" total={this.state.houses[2]} percentage = {this.state.houses[2] / this.state.total}/>
-            <Hourglass house="Hufflepuff" total={this.state.houses[3]} percentage = {this.state.houses[3] / this.state.total}/>
+            <div className="body" style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around'}}>
+                <Hourglass house="Slytherin" total={this.state.houses[0]} percentage = {this.state.houses[0] / this.state.total}/>
+                <Hourglass house="Ravenclaw" total={this.state.houses[1]} percentage = {this.state.houses[1] / this.state.total}/>
+                <Hourglass house="Gryffindor" total={this.state.houses[2]} percentage = {this.state.houses[2] / this.state.total}/>
+                <Hourglass house="Hufflepuff" total={this.state.houses[3]} percentage = {this.state.houses[3] / this.state.total}/>
+            </div>
           </div>
         }
         return (

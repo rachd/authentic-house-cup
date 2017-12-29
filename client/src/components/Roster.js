@@ -13,10 +13,10 @@ class Roster extends Component {
             let list = data;
             Object.keys(list).map(entry => {
                 switch(list[entry]) {
-                    case 0: list[entry] = 'Slytherin'; break;
-                    case 1: list[entry] = 'Ravenclaw'; break;
-                    case 2: list[entry] = 'Gryffindor'; break;
-                    case 3: list[entry] = 'Hufflepuff'; break;
+                    case '0': list[entry] = 'Slytherin'; break;
+                    case '1': list[entry] = 'Ravenclaw'; break;
+                    case '2': list[entry] = 'Gryffindor'; break;
+                    case '3': list[entry] = 'Hufflepuff'; break;
                 }
             })
             this.setState({list: data})
