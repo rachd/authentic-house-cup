@@ -27,8 +27,8 @@ class Hourglass extends Component {
         }
         const colorHeight = 400 * this.props.percentage;
         return (
-            <div style={{textAlign: 'center'}}>
-                <img src={crest} alt={this.props.house} style={{width: 120}}/>
+            <div style={{textAlign: 'center', padding: '5px 2px 0'}}>
+                <img src={crest} alt={this.props.house} style={{height: 142}}/>
                 <div style={{
                     border: '1px solid black',
                     height: 400,

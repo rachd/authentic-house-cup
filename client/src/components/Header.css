@@ -11,7 +11,7 @@
     height: 100px;
 }
 
-@media screen and (max-width: 1050px) {
+@media screen and (max-width: 1060px) {
     .hp-header__logo {
         height: 100%;
         width: 100%;

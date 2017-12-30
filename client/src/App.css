@@ -13,6 +13,7 @@ button,
   color: #fff;
   font-size: 20px;
   font-family: 'sans-serif';
+  display: inline-block;
 }
 
 a {
